@@ -12,43 +12,32 @@ let package = Package(
         .visionOS(.v26)
     ],
     products: [
-        .library(name: "Storage Split Primitives", targets: ["Storage Split Primitives"]),
-        .library(name: "Storage Split Primitives Test Support", targets: ["Storage Split Primitives Test Support"]),
+        // MARK: - Store.Split (the dual-plane store combinator)
+        .library(name: "Store Split Primitives", targets: ["Store Split Primitives"]),
     ],
     dependencies: [
-        .package(path: "../swift-storage-primitives"),
-        .package(path: "../swift-index-primitives"),
-        .package(path: "../swift-memory-primitives"),
-        .package(path: "../swift-property-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-index-primitives.git", branch: "main"),
+        // Test-only: concrete Storage.Contiguous planes to compose under Store.Split.
+        .package(url: "https://github.com/swift-primitives/swift-storage-primitives.git", branch: "main"),
     ],
     targets: [
+
+        // MARK: - Store.Split combinator
         .target(
-            name: "Storage Split Primitives",
+            name: "Store Split Primitives",
             dependencies: [
-                .product(name: "Storage Primitive", package: "swift-storage-primitives"),
-                .product(name: "Storage Error Primitives", package: "swift-storage-primitives"),
-                .product(name: "Storage Initialization Primitives", package: "swift-storage-primitives"),
-                .product(name: "Storage Field Primitives", package: "swift-storage-primitives"),
-                .product(name: "Storage Accessor Primitives", package: "swift-storage-primitives"),
+                .product(name: "Store Primitive", package: "swift-storage-primitives"),
+                .product(name: "Store Protocol Primitives", package: "swift-storage-primitives"),
                 .product(name: "Index Primitives", package: "swift-index-primitives"),
-                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
-                .product(name: "Property Primitives", package: "swift-property-primitives"),
             ]
         ),
-        .target(
-            name: "Storage Split Primitives Test Support",
-            dependencies: [
-                "Storage Split Primitives",
-                .product(name: "Storage Primitives Test Support", package: "swift-storage-primitives"),
-            ],
-            path: "Tests/Support"
-        ),
+
+        // MARK: - Tests
         .testTarget(
-            name: "Storage Split Primitives Tests",
+            name: "Store Split Primitives Tests",
             dependencies: [
-                "Storage Split Primitives",
-                "Storage Split Primitives Test Support",
-                .product(name: "Storage Primitives Test Support", package: "swift-storage-primitives"),
+                "Store Split Primitives",
+                .product(name: "Storage Contiguous Primitives", package: "swift-storage-primitives"),
             ]
         ),
     ],

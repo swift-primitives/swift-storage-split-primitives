@@ -9,6 +9,5 @@
 //
 // ===----------------------------------------------------------------------===//
 
-// MARK: - Test Support spine ([MOD-024])
-@_exported public import Storage_Split_Primitives
-@_exported public import Storage_Primitives_Test_Support
+@_exported public import Store_Primitive
+@_exported public import Store_Protocol_Primitives
