@@ -1,5 +1,5 @@
 # .github/metadata.yaml
-description: "Split (struct-of-arrays) storage types for Swift."
+description: "Dual-plane (structure-of-arrays) store combinator composing independent metadata and payload substrates for Swift."
 topics:
   - primitives
   - storage
