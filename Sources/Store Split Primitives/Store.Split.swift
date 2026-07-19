@@ -73,6 +73,8 @@ extension Store {
 
 // MARK: - Conditional Copyability
 
-/// A split is copyable exactly when both of its planes are. Copying copies the planes; what a plane
-/// copy MEANS (eager copy, CoW reference share, …) is the plane's own semantic.
+/// A split is copyable exactly when both of its planes are.
+///
+/// Copying copies the planes; what a plane copy MEANS (eager copy, CoW
+/// reference share, …) is the plane's own semantic.
 extension Store.Split: Copyable where Lanes: Copyable, Elements: Copyable {}
