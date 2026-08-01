@@ -26,10 +26,13 @@ private typealias Plane<Element: ~Copyable> =
     Storage<Memory.Allocator<Memory.Heap>>.Contiguous<Element>
 
 @Suite
-struct StoreSplitTests {
+struct `Store Split Tests` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
 
     @Test
-    func payloadSeamForwardsToElementPlane() {
+    func `payload seam forwards to element plane`() {
         var split = Store.Split(
             lanes: Plane<UInt8>.create(minimumCapacity: Index<UInt8>.Count(4)),
             elements: Plane<Int>.create(minimumCapacity: Index<Int>.Count(4))
@@ -53,7 +56,7 @@ struct StoreSplitTests {
     }
 
     @Test
-    func lanePlaneIsIndependentlyAccessible() {
+    func `lane plane is independently accessible`() {
         var split = Store.Split(
             lanes: Plane<UInt8>.create(minimumCapacity: Index<UInt8>.Count(4)),
             elements: Plane<Int>.create(minimumCapacity: Index<Int>.Count(4))

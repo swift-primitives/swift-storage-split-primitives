@@ -44,12 +44,6 @@ extension Store {
         Lanes: Store.`Protocol` & ~Copyable,
         Elements: Store.`Protocol` & ~Copyable
     >: ~Copyable {
-        /// The payload element type — the split's `Store.`Protocol`` `Element`.
-        public typealias Element = Elements.Element
-
-        /// The per-slot metadata element type, derived from the lane plane.
-        public typealias Lane = Lanes.Element
-
         /// The lane (metadata) plane.
         @usableFromInline
         internal var _lanes: Lanes
@@ -69,6 +63,16 @@ extension Store {
             self._elements = elements
         }
     }
+}
+
+// MARK: - Associated Types
+
+extension Store.Split where Lanes: ~Copyable, Elements: ~Copyable {
+    /// The payload element type — the split's `Store.`Protocol`` `Element`.
+    public typealias Element = Elements.Element
+
+    /// The per-slot metadata element type, derived from the lane plane.
+    public typealias Lane = Lanes.Element
 }
 
 // MARK: - Conditional Copyability
