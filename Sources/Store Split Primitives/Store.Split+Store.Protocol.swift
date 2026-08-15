@@ -35,7 +35,10 @@ extension Store.Split where Lanes: ~Copyable, Elements: ~Copyable {
 
     /// Initializes the uninitialized payload slot at `slot` (witnesses `initialize(at:to:)`).
     @inlinable
-    public mutating func initialize(at slot: Index<Elements.Element>, to element: consuming Elements.Element) {
+    public mutating func initialize(
+        at slot: Index<Elements.Element>,
+        to element: consuming Elements.Element
+    ) {
         _elements.initialize(at: slot, to: element)
     }
 
