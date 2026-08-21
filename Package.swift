@@ -12,7 +12,7 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        // MARK: - Store.Split (the dual-plane store combinator)
+
         .library(name: "Store Split Primitives", targets: ["Store Split Primitives"])
     ],
     dependencies: [
@@ -20,7 +20,7 @@ let package = Package(
             url: "https://github.com/swift-primitives/swift-index-primitives.git",
             branch: "main"
         ),
-        // Test-only: concrete Storage.Contiguous planes to compose under Store.Split.
+
         .package(
             url: "https://github.com/swift-primitives/swift-storage-primitives.git",
             branch: "main"
@@ -28,7 +28,6 @@ let package = Package(
     ],
     targets: [
 
-        // MARK: - Store.Split combinator
         .target(
             name: "Store Split Primitives",
             dependencies: [
@@ -38,7 +37,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Tests
         .testTarget(
             name: "Store Split Primitives Tests",
             dependencies: [
